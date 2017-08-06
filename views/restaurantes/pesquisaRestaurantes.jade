@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+
+    h4 Restaurantes
+    br
+    h5 Filtros
+    div(style="margin-left: 40px")
+        input(class="form-control", placeholder="pesquise pelo nome do restaurante...")
+        br
+        br
+        button(class="btn btn-primary") Pesquisar     
+        a(class="btn btn-success", style="margin-left: 20px", href="/restaurantes/novo") Cadastrar novo Restaurante
+        br
+        br
+    if messages.erro
+        div(class="alert alert-danger")
+            p messages.erro
+        br
+    if restaurantes.lenght == null
+        table(class="table table-striped")
+            thead
+                tr
+                    th ID:
+                    th Nome:
+                    th Ações:
+            tbody
+                each r in restaurantes
+                    tr
+                        td #{r._id}
+                        td #{r.nome}
+                        td 
+    else
+        p Nenhum restaurante encontrado 
